@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .profileImage{
+    max-width:300px;
+    }
+
+  </style>
+</head>
+<body>
+<header>
+
+</header>
+<main>
+  <img class="profileImage" th:src="@{https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png}"/>
+
+  <h2 th:text="${userInfo.username}"></h2>
+  <h2 th:text="${userInfo.firstName}"></h2>
+  <h2 th:text="${userInfo.lastName}"></h2>
+  <h2 th:text="${userInfo.bio}"></h2>
+  <h2 th:text="${userInfo.dateOfBirth}"></h2>
+  <h2 th:text="${userInfo.id}"></h2>
+
+  <form  th:action="@{/addpost}" method="post" >
+    <div >
+      <label for="body">Type Your Post</label>
+      <textarea class="form-control" rows="3" field="*{body}" name="body" id="body" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+
+  <div>
+    <h3> Your Posts : </h3>
+    <ul th:each="post : ${userInfo.postList}"  >
+      <li class="list-group-item disabled">Post :<span th:text="${post.body}"></span><br/>
+      <li class="list-group-item disabled">Time :<span th:text="${post.createdAt}"></span><br/>
+      <li class="list-group-item disabled">Posted By :<span th:text="${post.user.username}"></span><br/>
+
+      </li>
+      <br/>
+    </ul>
+  </div>
+
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
