@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,12 +13,22 @@
 <form action="/login" method="get">
     <button type="submit">Sign in</button>
 </form>
-<form action="/perform_logout" method="get">
-    <button type="submit">Sign Out</button>
-</form>
+<div th:if="${userId != null}">
+    <form action="/perform_logout" method="get">
+        <button type="submit">Sign Out</button>
+    </form>
+</div>
+<div th:if="${userId != null}">
 <form th:action="@{/profile}" method="get">
     <button type="submit">Profile</button>
 </form>
+</div>
+
+<div th:if="${userId != null}">
+    <form th:action="@{/findUsers}" method="get">
+        <button type="submit">Show Users</button>
+    </form>
+</div>
 
 <!--<input th:text="${userId}" th:value="${userId}">-->
 
