@@ -30,8 +30,12 @@ public class IndexController {
             model.addAttribute("userBio",userInfo.getBio());
             List<Post> postList =  postRepository.findAllByUser(userInfo);
             model.addAttribute("postList" , postList );
-        }
         return "index";
+        }
+        else{
+            return "index";
+        }
+
     }
 
 }

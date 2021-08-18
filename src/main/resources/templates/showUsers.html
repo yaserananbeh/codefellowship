@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="user : ${users}"  >
+    <div th:if="${user.id != signedUserId}">
+        <li class="list-group-item disabled">First Name :<span th:text="${user.firstName}"></span><br/>
+        <li class="list-group-item disabled">Last Name :<span th:text="${user.lastName}"></span><br/>
+        <li class="list-group-item disabled">Date of Birth :<span th:text="${user.dateOfBirth}"></span><br/>
+        <li class="list-group-item disabled">Bio :<span th:text="${user.bio}"></span><br/>
+            <form th:action="@{/followuser/}+${user.id}" method="get">
+                <button type="submit">Follow</button>
+            </form>
+        </li>
+        <br/>
+    </div>
+</ul>
+
+</body>
+</html>
